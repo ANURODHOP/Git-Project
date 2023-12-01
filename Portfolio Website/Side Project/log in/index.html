@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Log in Or Signup</title>
+    <style>
+        * {
+            font-family: sans-serif;
+            font-size: 25px;
+        }
+
+        body {
+            background-color: palevioletred;
+            z-index: -1;
+        }
+
+        div.container {
+            margin: auto;
+            margin-top: 200px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            border-radius: 80px 10px;
+            min-height: 240px;
+            width: 30%;
+            box-shadow: 0 0 5px 7px rgba(1, 1, 1, 0.35);
+            background-color: whitesmoke;
+        }
+
+        div.header {
+            padding: 30px;
+        }
+
+        div.button {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 100px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            background-color: salmon;
+            border-radius: 7px;
+        }
+
+        a:hover {
+            background-color: rgb(251, 96, 79);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            background-color: lightgoldenrodyellow;
+            padding: 7px 0px;
+            color: rgb(216, 57, 211);
+            border: 5px dotted burlywood;
+        }
+
+        p {
+            margin-left: 65px;
+        }
+
+        .human {
+            padding: 7px;
+            text-align: center;
+            background-color: rgb(28, 27, 27);
+            color: rgb(200, 195, 195);
+            margin: auto;
+            margin-top: 50px;
+            width: max-content;
+            height: 65px;
+        }
+
+        .checkbox {
+            margin-top: 20px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Log In or Sign Up form!</h1>
+            <p>New member to this site..<br>Click on Sign-Up</p>
+        </div>
+        <hr>
+        <div class="button">
+            <a href="login.html">Login</a>
+            <a href="signup.html">SignUp</a>
+        </div>
+    </div>
+    <div class="human">
+        <input type="checkbox" class="checkbox" checked>&nbsp;&nbsp;Are You Human?
+    </div>
+        
+</body>
+
+</html>

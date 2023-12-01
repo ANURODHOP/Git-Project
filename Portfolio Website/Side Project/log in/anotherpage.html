@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 11 Computer Science</title>
+    <link rel="shortcut icon" href="signup.png" type="image/x-icon">
+    <style>
+        body{
+            background-color: lightcyan;
+        }
+        .bar{
+            width: 15%;
+            border: 1px solid lightcyan;
+            height: 100vh;
+            background-color: rgb(228, 220, 220);
+            position: fixed;
+            overflow-y: scroll;
+        }
+        ul{
+            list-style-type: none;
+            font-size: large;
+            padding: 0px;
+            margin-top: 4px;
+            position:absolute;
+            top: -5px;
+            width: 100%;
+            
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        li{
+            background-color: whitesmoke;
+            padding: 10px;
+            padding-left: 30px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            cursor: pointer;
+        }
+        li:nth-child(odd){
+            background-color: rgb(196, 193, 193);
+        }
+        li:hover{
+            font-weight: bold;
+        }
+        li.home{
+            background-color: green;
+            color: white;
+            font-weight: bold;
+        }
+        .content{
+            width: 70%;
+            margin-left: 20%;
+            border: 2px solid tomato;
+            border-radius: 5px;
+            padding: 5px 20px;
+            height: 550px;
+            background-color: skyblue;
+        }
+        .header{
+            margin-top: 20px;
+            padding: 15px;
+            background-color: blue;
+            color: antiquewhite;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 25%;
+            font-size: large;
+            border-radius: 7px;
+        }
+        #textbox{
+            padding: 100px;
+            font-size: large;
+            width: 70%;
+            height: 100px;
+            border-radius: 7px;
+        }
+        #sumit{
+            background-color: red;
+            padding: 10px;
+            font-size: medium;
+            color: white;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+        .search{
+            margin: 10px;
+            background-image: url(search.png);
+            background-position: 10px 3.4px;
+            background-repeat: no-repeat;
+            width: 8%;
+            font-size: medium;
+            transition: 0.7s ease-in-out;
+            border: 2px solid grey;
+            border-radius: 7px;
+            padding: 20px 0px;
+            padding-left: 75px;
+           
+        }
+        .search:hover , .search:focus{
+            width: 80%;
+            border:2px solid red;   
+            resize: none;
+        }
+        .hidden{
+            padding: 3px;
+            font-size: 20px;
+            color: tomato;
+            display: none;
+            z-index: 100;
+            position: absolute;
+        }
+        .yes{
+            padding: 10px;
+            background-color: red;
+            color: ghostwhite;
+            display: inline-block;
+        }
+        div.abc:hover div.hidden{
+            display: inline-block;
+        }
+        div.abc:active div.hidden{
+            display: inline-block;
+        }
+        .abc{
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bar">
+            <ul>
+                <li class="home">Home</li>
+                <li>Notifications</li>
+                <li>Online Classes</li>
+                <li>Assignments</li>
+                <li>Results</li>
+                <li>Class Routine</li>
+                <li>About</li>
+                <li>Help</li>
+                <div class="abc">
+                <li class="logout"><a href="#" class="out">Logout</a></li>
+                <div class="hidden">
+                    Are you sure you want to log out?<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="login.html" class="yes" onclick="myfunction()">Yes</a>
+                </div>
+                </div>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="header">WELCOME TO CLASS 11 'F'</div><br>
+            <input type="text" placeholder="Search" class="search">
+            <label><textarea name="" id="textbox" cols="30" rows="10" placeholder="Write your thoughs and views you want to share with your class"></textarea></label>
+            <br><br>
+            <input type="submit" value="Submit" id="sumit">
+    </div>
+    </div>
+</body>
+<script>
+    function myfunction(){
+    alert('!!   You have been logged out successfully   !!');
+    }
+</script>
+</html>

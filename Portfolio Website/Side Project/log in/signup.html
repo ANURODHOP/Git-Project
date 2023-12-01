@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up</title>
+    <link rel="shortcut icon" href="signup.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: lightgoldenrodyellow;
+            min-height: 150vh;
+        }
+
+        .container {
+            margin-top: 250px;
+            margin-left: 350px;
+            border: 2px solid red;
+            outline: 1px solid orange;
+            width: 50%;
+            background-color: aliceblue;
+            min-height: 500px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        h1 {
+            text-decoration: underline;
+            text-align: center;
+            color: rgb(94, 92, 92);
+        }
+
+        #signup {
+            padding-left: 20px;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+            display: inline-block;
+            color: rgb(250, 67, 35);
+
+        }
+
+        .text,
+        .number {
+            width: 95%;
+            height: 25px;
+            border-radius: 5px;
+            padding: 8px 0px;
+            padding-left: 30px;
+            font-size: medium;
+        }
+
+        .submit {
+            position: absolute;
+            left: 450px;
+            width: 10%;
+            height: 40px;
+            border-radius: 12px;
+            background-color: coral;
+            cursor: pointer;
+            font-size: medium;
+            color: white;
+
+        }
+
+        div.checkbox{
+            width: max-content;
+            height: 25px;
+            margin: auto;
+        }
+        div.checkbox input{
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sign-Up</h1>
+        <hr>
+        <br><br>
+        <form name="signup" id="signup">
+            <p>First Name:</p><br>
+            <input type="text" name="" class="text" id="fname" placeholder="Anurodh" required>
+            <p>Last Name:</p><br>
+            <input type="text" name="" class="text" id="lname" placeholder="Prasai" required>
+            <p>Date OF Birth:</p><br>
+            <input type="date" name="" class="number" id="DOB" required>
+            <p>UserName:</p><br>
+            <input type="email" name="" class="text" id="email" placeholder="someone@gmail.com">
+            <p>Password:</p><br>
+            <input type="password" name="" class="text" id="pass" placeholder="Create a strong Password">
+    </div>
+    <br>
+    <input type="submit" value="Sign-In" class="submit" onclick="myfunction()">
+    <br><br><br><div class="checkbox">
+        <input type="checkbox" checked>
+        <p>I agree With all the terms and conditions</p>
+    </div>
+
+    </form>
+</body>
+<script>
+    function myfunction() {
+        alert("You have succesively created a new account.");
+    }
+</script>
+
+</html>
