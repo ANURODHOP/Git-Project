@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Select Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: aquamarine;
+        }
+
+        div.selector {
+            margin-top: 10px;
+            width: 250px;
+            height: 50px;
+            padding: 10px;
+            background-color: azure;
+            position: relative;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        div.selector img {
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            bottom: 13px;
+            right: 13px;
+        }
+        .arrow-toggle{
+            transform: rotateX(180deg);
+        }
+
+
+        .content-container{
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 7px;
+        }
+        .content{
+            width: 250px;
+            height: 50px;
+            padding-left: 50px;
+            background-color: azure;
+            position: relative;
+            line-height: 45px;
+            cursor: pointer;
+        }
+        .nodisplay{
+            display: none;
+        }
+        .content:hover{
+            background-color: rgb(196, 194, 193);
+        }
+
+        .content img{
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 13px;
+            top: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="selector">
+            <h3>Select</h3>
+            <img src="Asset/arrow.png" class="arrow-toggle">
+        </div>
+
+        <div class="content-container nodisplay">
+            <div class="content">
+                <img src="Asset/facebook.png" alt="">
+                <h3>Facebook</h3>
+            </div>
+            <div class="content">
+                <img src="Asset/instagram.png" alt="">
+                <h3>Instagram</h3>
+            </div>
+            <div class="content">
+                <img src="Asset/pinterest.png" alt="">
+                <h3>Pinterest</h3>
+            </div>
+            <div class="content">
+                <img src="Asset/youtube.png" alt="">
+                <h3>Youtube</h3>
+            </div>
+            <div class="content">
+                <img src="Asset/whatsapp.png" alt="">
+                <h3>Whatsapp</h3>
+            </div>
+            <div class="content">
+                <img src="Asset/twitter.png" alt="">
+                <h3>Twitter</h3>
+            </div>
+        </div>
+    </div>
+    <script>
+        const selectBtn = document.querySelector('.selector');
+        var selectBtn_text = selectBtn.querySelector('h3');
+        var selectBtn_img = selectBtn.querySelector('img');
+        selectBtn.addEventListener("click",(e)=>{
+            e.preventDefault()
+            content_container.classList.toggle('nodisplay');
+            selectBtn_img.classList.toggle('arrow-toggle');
+        })
+        
+        const content_container = document.querySelector('.content-container');
+        const content = document.querySelectorAll('.content');
+        content.forEach(element => {
+            element.addEventListener("click",(e)=>{
+                e.preventDefault();
+                var text = element.querySelector('h3').textContent;
+                selectBtn_text.textContent = text;
+                content_container.classList.toggle('nodisplay');
+            })
+        });
+    </script>
+</body>
+
+</html>
