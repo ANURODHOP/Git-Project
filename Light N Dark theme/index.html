@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light N Dark theme</title>
+    <style>
+        /*
+            When theme is light,
+                The body is black and h2 is white and vice versa when
+                    the theme is dark
+
+        */
+
+
+        :root {
+            --primary: white;
+            --secondary: purple;
+        }
+
+        .darkTheme {
+            --primary: black;
+            --secondary: white;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: var(--primary);
+        }
+
+        img {
+            margin-left: 90%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding: 10px;
+            background: linear-gradient(blue,violet);
+        }
+
+        h2 {
+            width: 100%;
+            font-size: 4rem;
+            margin: 35%;
+            margin-top: 20%;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="assets/moon.png">
+    <h2>Light Or Dark Theme</h2>
+    <script>
+        var icon = document.querySelector('img');
+        if (localStorage.getItem("theme") == null) {
+            localStorage.setItem("theme", "light");
+        }else if(localStorage.getItem("theme") == "light"){
+            document.body.classList.remove("darkTheme");
+            icon.src = "assets/moon.png";
+        }
+        else if(localStorage.getItem("theme") == "dark"){
+            document.body.classList.add("darkTheme");
+            icon.src = "assets/sun.png"
+
+        }
+
+        icon.addEventListener("click", () => {
+            var storage = localStorage.getItem("theme");
+            document.body.classList.toggle("darkTheme");
+
+            if (storage == "light") {
+                localStorage.setItem("theme", "dark");
+                icon.src = "assets/sun.png";
+            }
+
+
+            if (storage == "dark") {
+                icon.src = "assets/moon.png"
+                localStorage.setItem("theme", "light");
+            }
+        })
+
+    </script>
+</body>
+
+</html>
