@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Student's Details</title>
+    <script src="https://kit.fontawesome.com/98a8318835.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .container {
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .form {
+            margin-left: 50px;
+            width: 30%;
+            padding: 25px;
+            padding-top: 100px;
+        }
+
+        .form button {
+            padding: 20px;
+            font-size: large;
+            background-color: blueviolet;
+            color: white;
+            border: 0px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .form form {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin-top: 100px;
+            width: max-content;
+            padding: 25px 50px;
+            border-radius: 8px;
+            background-color: royalblue;
+            color: antiquewhite;
+        }
+
+        form p {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        input[type=text] {
+            margin-bottom: 20px;
+            height: 30px;
+            padding: 5px;
+            padding-left: 15px;
+            font-size: 1.15rem;
+        }
+
+        input[type=text]:focus {
+            outline: 0px;
+            border: 3px solid orchid;
+        }
+
+        input[type=submit] {
+            cursor: pointer;
+            padding: 10px;
+            font-size: large;
+            background-color: white;
+            border: none;
+            border-radius: 7px;
+            color: rgb(130, 9, 242);
+        }
+
+
+
+        hr {
+            margin-top: 50px;
+            height: 80vh;
+            padding: 4px;
+            background-color: indianred;
+
+        }
+
+
+
+        .database {
+            margin: 100px;
+        }
+
+        table {
+            width: 600px;
+            border: 1px solid lightgray;
+        }
+
+        .tr-first {
+            border-bottom: 1px solid black;
+        }
+
+        th {
+            padding: 10px;
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        i.edit {
+            cursor: pointer;
+            background-color: whitesmoke;
+            border-radius: 7px;
+            color: blue;
+            padding: 10px;
+        }
+
+        i.del {
+            cursor: pointer;
+            color: red;
+            background-color: whitesmoke;
+            border-radius: 7px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <button>Add Student</button>
+            <form autocomplete="off" action="#">
+                <p>Name : </p>
+                <input type="text" id="name">
+                <p>Symbol No. : </p>
+                <input type="text" id="symbolno">
+                <p>GPA : </p>
+                <input type="text" id="gpa"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <hr>
+        <div class="database">
+            <span style="font-size: 2rem;">Student's Record</span><br><br>
+            <table class="table">
+                <thead>
+                    <tr class="tr-first">
+                        <th>Name</th>
+                        <th>Symbol No.</th>
+                        <th>GPA</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const add_student = document.querySelector('.form button');
+        const form = document.querySelector('form');
+        const tablebody = document.querySelector('tbody');
+
+        add_student.addEventListener("click", () => {
+            form.style.opacity = 1;
+        });
+
+        form.addEventListener("submit", () => {
+            document.querySelector('.database').style.filter = "none"
+            form.style.opacity = 0;
+            const name = form.querySelector('#name');
+            const symbolno = form.querySelector('#symbolno');
+            const gpa = form.querySelector('#gpa');
+            tablebody.innerHTML += `
+            <tr>
+                    <td>${name.value}</td>
+                    <td>${symbolno.value}</td>
+                    <td>${gpa.value}</td>
+                    <td><i class="fa-solid fa-pen edit"></i></td>
+                    <td><i class="fa-solid fa-trash del"></i></td>                    
+                  </tr>
+            `;
+            name.value = '';
+            gpa.value = '';
+            symbolno.value = '';
+
+            edit_btn = tablebody.querySelectorAll('i.edit');
+            delete_btn = tablebody.querySelectorAll('i.del');
+
+            delete_btn.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    btn.parentElement.parentElement.style.display = "none";
+                })
+
+            })
+
+            edit_btn.forEach((btn)=>{
+                btn.addEventListener("click",()=>{
+                    var row = btn.parentElement.parentElement;
+                    name.value = row.cells[0].innerHTML;
+                    symbolno.value = row.cells[1].innerHTML;
+                    gpa.value = row.cells[2].innerHTML;
+                    document.querySelector('.database').style.filter = "blur(5px)"
+                    setTimeout(()=>{
+                        form.style.opacity = 1;
+                        row.style.display = "none";
+                    },1000)
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
