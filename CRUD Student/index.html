@@ -15,9 +15,51 @@
         }
 
         .container {
+            height: 100vh;
             margin: auto;
             display: flex;
             flex-direction: row;
+        }
+
+        .about-clg {
+            background-color: blueviolet;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .about-clg img {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .about-clg h3 {
+            color: rgb(213, 212, 212);
+        }
+
+        .about-clg p{
+            padding: 25px;
+            background-color: rgb(100, 6, 189);
+            color: white;
+            line-height: 25px;
+            margin-top: 30px;
+            width: 40%;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 700ms ease-in-out 100ms;
+        }
+        .about-clg p:hover{
+            background-color: rgb(73, 3, 251);
+            transform: scale(1.05);
         }
 
         .form {
@@ -129,16 +171,29 @@
 </head>
 
 <body>
+    <div class="about-clg">
+        <img src="https://tivs.edu.np/assets/images/sitelogo/logo/93659.png" alt="">
+        <h1>Insight Vision College</h1>
+        <h3>Dhumbharai, Sukedhara, Kathmandu</h3>
+        <h3>01-4542357 / +977-9813415505</h3>
+        <p>Dear Students, Parents, and Guardians,<br><br>
+
+            Welcome to The Insight Vision, a preeminent private academic institution in Nepal, renowned for its
+            unwavering commitment to educational excellence since its inception in 1992 A.D. Throughout the past three
+            decades, we have remained dedicated to the pursuit of delivering exceptional education and shaping the
+            future of our students.
+        </p>
+    </div>
     <div class="container">
         <div class="form">
             <button>Add Student</button>
             <form autocomplete="off" action="#">
                 <p>Name : </p>
-                <input type="text" id="name">
+                <input type="text" name="name" id="name" required>
                 <p>Symbol No. : </p>
-                <input type="text" id="symbolno">
+                <input type="text" name="symbolno" id="symbolno" required>
                 <p>GPA : </p>
-                <input type="text" id="gpa"><br>
+                <input type="text" name="gpa" id="gpa" required><br>
                 <input type="submit" value="Submit">
             </form>
         </div>
@@ -153,7 +208,6 @@
                         <th>GPA</th>
                     </tr>
                 </thead>
-
                 <tbody>
                 </tbody>
             </table>
@@ -168,14 +222,15 @@
             form.style.opacity = 1;
         });
 
-        form.addEventListener("submit", () => {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
             document.querySelector('.database').style.filter = "none"
             form.style.opacity = 0;
             const name = form.querySelector('#name');
             const symbolno = form.querySelector('#symbolno');
             const gpa = form.querySelector('#gpa');
-            tablebody.innerHTML += `
-            <tr>
+            tablebody.innerHTML = tablebody.innerHTML + `
+                 <tr>
                     <td>${name.value}</td>
                     <td>${symbolno.value}</td>
                     <td>${gpa.value}</td>
@@ -197,17 +252,17 @@
 
             })
 
-            edit_btn.forEach((btn)=>{
-                btn.addEventListener("click",()=>{
+            edit_btn.forEach((btn) => {
+                btn.addEventListener("click", () => {
                     var row = btn.parentElement.parentElement;
                     name.value = row.cells[0].innerHTML;
                     symbolno.value = row.cells[1].innerHTML;
                     gpa.value = row.cells[2].innerHTML;
                     document.querySelector('.database').style.filter = "blur(5px)"
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         form.style.opacity = 1;
                         row.style.display = "none";
-                    },1000)
+                    }, 1000)
                 })
             })
         })
