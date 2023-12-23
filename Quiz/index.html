@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 86vh;
+            max-width: 100vw;
+            background: linear-gradient(blue, purple);
+        }
+
+        .container {
+            margin-top: 100px;
+            margin-left: 500px;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: yellowgreen;
+        }
+
+        h1.question {
+            color: white;
+            margin-top: 50px;
+        }
+
+        div.answers {
+            margin-top: 100px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        div.answers button {
+            text-align: center;
+            width: 60%;
+            height: 35px;
+            border: 1px solid black;
+            background-color: white;
+        }
+
+        div.answers button:hover {
+            cursor: pointer;
+            background-color: rgb(231, 231, 231);
+        }
+
+        button.next {
+            margin-top: 15px;
+            background-color: blueviolet;
+            color: white;
+            cursor: pointer;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 7px;
+            font-size: large;
+
+        }
+
+        .white {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="question"></h1>
+        <div class="answers">
+            <button></button>
+            <button></button>
+            <button></button>
+            <button></button>
+        </div>
+        <button class="next" onclick="next()">NEXT</button>
+    </div>
+    <script>
+        const container = document.querySelector(".container");
+
+        const questions = [
+            {
+                question: "What is the capital of Nepal ?",
+                answers: ["Kathmandu", "Itahari", "Lumbini", "Chitwan"],
+                correctAns: "Kathmandu"
+            }
+            ,
+            {
+                question: "What is the capital of Japan ?",
+                answers: ["Tokyo", "Osaka", "Wano", "Leaf Village"],
+                correctAns: "Wano"
+            }
+            ,
+            {
+                question: "What country has the most islands in the world?",
+                answers: ["Sweden", "Indonesia", "Peru", "ALL"],
+                correctAns: "Sweden"
+            }
+            ,
+            {
+                question: "What’s the national animal of Australia?",
+                answers: ["Brown Kangaroo", "AUS Kangaroo", "Red Kangaroo", "Kangaroo"],
+                correctAns: "Red Kangaroo"
+            }
+            ,
+            {
+                question: "Which language has the most words (according to dictionary entries)? ",
+                answers: ["Chinese", "Sanskrit", "Mandarian", "English"],
+                correctAns: "English"
+            }
+            ,
+            {
+                question: "How much of the Heritage of Nepal is to be celebrated in the World Heritage Site?",
+                answers: ["10","8","14","6"],
+                correctAns: "10"
+            }
+
+        ]
+        const length = questions.length;
+        var currentIndex = 0;
+        var score = 0;
+
+        function currentQuestion() {
+
+            container.innerHTML = `
+                <h1 class="question">${questions[currentIndex].question}</h1>
+                <div class="answers">
+                    <button>${questions[currentIndex].answers[0]}</button>
+                    <button>${questions[currentIndex].answers[1]}</button>
+                    <button>${questions[currentIndex].answers[2]}</button>
+                    <button>${questions[currentIndex].answers[3]}</button>
+                </div>
+                <button class="next" onclick="next()">NEXT</button>
+            `
+            check();
+
+        }
+        function result() {
+            container.innerHTML = `
+                <div class="answers">
+                    <h1 class="white">
+                        Quiz Completed
+                    </h1>
+                    <h2 class="white">You scored ${score} out of ${length}</h2>    
+                </div>
+            `
+        }
+        function check() {
+            var options = container.querySelectorAll(".answers button");
+            options.forEach((btn) => {
+                if (btn.innerHTML == questions[currentIndex].correctAns) {
+                    btn.classList.add("correct");
+                }
+            })
+            options.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    container.style.pointerEvents = "none"
+                    var next = container.querySelector(".next")
+                    next.style.pointerEvents = "all"
+                    if (btn.classList.contains("correct")) {
+                        btn.style.background = "green"
+                        btn.style.color = "white"
+                        score++;
+                    } else {
+                        btn.style.background = "red";
+                        btn.style.color = "white"
+                        var right = container.querySelector(".correct");
+                        setTimeout(() => {
+                            right.style.background = "green";
+                            right.style.color = "white"
+                        }, 500)
+                    }
+                })
+            })
+        }
+        function next() {
+            container.style.pointerEvents = "all"
+            currentIndex++;
+            if (currentIndex == length) {
+                result();
+            } else {
+                currentQuestion();
+            }
+        }
+
+        currentQuestion()
+
+    </script>
+</body>
+
+</html>
